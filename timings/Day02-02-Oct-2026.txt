@@ -1,5 +1,5 @@
 4 hours- linux and git video
-30 mint-  for setup AWS instance
+30 mint- for setup AWS instance
 30 mint- for github repo initialize
 an hour- code practice of day 1 and 2
 an hour- Linux notes with practice
