@@ -1,4 +1,4 @@
 2 hours- git video 
 An hour- topics covered - IP, OSI, DNS
-20 mints- english speaking practice
-An hour- github and AWS setup
+20 mints- English speaking practice
+An hour- Github and AWS setup
