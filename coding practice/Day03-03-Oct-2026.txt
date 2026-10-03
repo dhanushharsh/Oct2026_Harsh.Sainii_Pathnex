@@ -1,0 +1,59 @@
+- name: Install and Start Apache
+  hosts: all
+  become: yes
+  tasks:
+    - name: httpd
+      state: present
+
+    - name: Start apache
+      service: 
+        name: httpd
+        state: started
+        enabled: yes
+
+provider "aws" {
+   region = "us-east-1"
+}
+
+resource "aws_instance" "PathnexEC2" {
+  ami           = "ami-01abcd1234abcd1234"
+  instance_type = "t3.medium"
+  tags = {
+    Name = "Pathnex-T3"
+   {
+{
+
+apiVersion: apps/v1
+Kind: Replicaset
+metadata:
+  name: pathnex-replicaset
+spec: 
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pathnex-app
+  template:
+     metadata:
+       labels:
+         app: pathnex-app
+      spec:
+        containers:
+          - name: app
+            image: ngnix
+            ports:
+              - containerPort: 80
+
+#!/bin/bash
+echo "Current user: $(whoami)"
+echo "Current user groups: $(groups)"
+
+FROM ngnix:latest
+COPY index.html /usr/share/ngnix/html/index.html
+
+<h1>Hello Pathnex</h1>
+
+/usr/share/ngnix/html
+
+docker build -t pathnex-ngnix
+docker run -d -p 80:80 pathnex-ngnix
+
