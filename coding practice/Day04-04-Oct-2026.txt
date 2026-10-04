@@ -1,0 +1,93 @@
+pipeline {
+    agent any
+    stages {
+       stage('Build') {
+           steps {
+               echo 'Building project'
+           }
+       }
+       stage('Test') {
+           steps {
+               echo 'Running tests'
+           }
+       }
+       stage('Deploy') {
+           steps {
+                echo 'Deploying application'
+           }
+        }
+    }
+}
+ 
+
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  script: 
+    - echo "Building project"
+
+test:
+  stage: test
+  script: 
+    - echo "Running tests"
+
+deploy:
+  stage: deploy
+  script: 
+    - echo "Deploying application"
+
+
+- name: Install and Configure Ngnix
+  hosts: all
+  become: yes
+  tasks:
+   - name: Install ngnix
+     yum: 
+       name: ngnix
+       state: present
+   - name: Configure ngnix
+     template: 
+        src: ngnix.conf.j2
+        dest: /etc/ngnix/ngnix.conf
+   - name: Start ngnix service
+     service: 
+       name: ngnix
+       state: started
+       enabled: yes
+
+resource "aws_security_group" "example" {
+  name        = "example_security_group"
+  description = "Allow SSH and HTTP"
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = '["0.0.0.0/0"]
+  }
+ 
+ ingress {
+   from_port   = 80
+   to_port     = 80
+   protocol    = "tcp"
+   cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+FROM ubuntu:22.04
+RUN apt update && apt install apache2 -y
+RUN echo "Hello Pathnex" > /var/www/html/index.html
+CMD ["apachectl", "-D" , "FOREGROUND"]
+
+/var/www/html
+
