@@ -1,0 +1,8 @@
+4 hours - kubernetes video
+1.5 hour - docker video
+40 mints - revision
+30 mints - code commit
+15 mitns - eve session preperation
+10 mints - introductory video
+
+
