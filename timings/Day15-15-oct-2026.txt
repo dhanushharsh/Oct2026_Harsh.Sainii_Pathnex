@@ -1,0 +1,5 @@
+3 hours - video k8s
+2 hours - practical k8s
+an hour - code commit & eve session prep
+15 mints - introductory video
+
