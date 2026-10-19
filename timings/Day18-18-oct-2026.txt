@@ -1,0 +1,6 @@
+2 hours - argocd video
+2 hours - ai video
+an hour - terraform video
+30 mints - code commit
+45 mints - eve session prep and introductory video
+
